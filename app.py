@@ -31,7 +31,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("Ei, tenho um segredo... 🤫")
+st.title("Com amor, Bianca")
 st.write("Clique no botão abaixo para descobrir.")
 
 # Lógica do Clique
@@ -43,7 +43,7 @@ if st.button("CLIQUE AQUI ❤️"):
     placeholder = st.empty()
     
     with placeholder.container():
-        st.markdown('<p class="big-font">❤️ TE AMO ❤️</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">❤️ TE AMO! HOJE, AMANHÃ E SEMPRE! ❤️</p>', unsafe_allow_html=True)
         
         # Aqui criamos a "chuva" visual usando colunas
         cols = st.columns(5)
@@ -54,4 +54,4 @@ if st.button("CLIQUE AQUI ❤️"):
 
     # Mensagem final carinhosa
     st.snow() # Isso cria um efeito suave de partículas caindo
-    st.success("Você é muito especial!")
+    st.success("Você é o amor da minha vida!")
