@@ -6,7 +6,7 @@ import random
 st.set_page_config(page_title="Com amor, Bianca!", page_icon="❤️")
 
 # --- COLOQUE O LINK DA SUA FOTO AQUI ---
-URL_DA_MINHA_FOTO = "https://suafoto.com/imagem.jpg" 
+URL_DA_MINHA_FOTO = "https://i.imgur.com/4fydr4j.jpg" 
 
 # Estilização customizada e Animação de Chuva
 st.markdown("""
