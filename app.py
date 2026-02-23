@@ -43,7 +43,8 @@ if st.button("CLIQUE AQUI ❤️"):
     placeholder = st.empty()
     
     with placeholder.container():
-        st.markdown('<p class="big-font">❤️ TE AMO! HOJE, AMANHÃ E SEMPRE! ❤️</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">❤️ TE AMO! ❤️</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font"> Que você nunca se esqueça disso, você é o amor da minha vida </p>', unsafe_allow_html=True)
         
         # Aqui criamos a "chuva" visual usando colunas
         cols = st.columns(5)
