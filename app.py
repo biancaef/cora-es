@@ -1,10 +1,14 @@
 import streamlit as st
 import time
+import random
 
 # Configuração da página
 st.set_page_config(page_title="Com amor, Bianca!", page_icon="❤️")
 
-# Estilização customizada para o botão e o texto
+# --- COLOQUE O LINK DA SUA FOTO AQUI ---
+URL_DA_MINHA_FOTO = "https://suafoto.com/imagem.jpg" 
+
+# Estilização customizada e Animação de Chuva
 st.markdown("""
     <style>
     .stButton>button {
@@ -17,42 +21,54 @@ st.markdown("""
         font-weight: bold;
         border: none;
     }
-    .stButton>button:hover {
-        background-color: #ff3333;
-        color: white;
-        border: 2px solid white;
+    
+    /* Estilo das imagens/corações que caem */
+    .falling-item {
+        position: fixed;
+        top: -15%;
+        user-select: none;
+        z-index: 9999;
+        pointer-events: none;
+        animation: fall linear forwards;
+        border-radius: 50%; /* Deixa a foto redondinha */
     }
-    .big-font {
-        font-size: 50px !important;
-        text-align: center;
-        color: #ff4b4b;
-        font-weight: bold;
+
+    @keyframes fall {
+        to { transform: translateY(115vh) rotate(360deg); }
     }
     </style>
     """, unsafe_allow_html=True)
+
+def chuva_personalizada(url_imagem):
+    html_items = ""
+    for i in range(25): # Quantidade de fotos caindo
+        left = random.randint(0, 95)
+        size = random.randint(50, 80) # Tamanho da foto em pixels
+        duration = random.uniform(2, 5)
+        delay = random.uniform(0, 3)
+        
+        # Cria a tag da imagem
+        html_items += f'''
+            <img src="{url_imagem}" class="falling-item" 
+            style="left: {left}%; width: {size}px; height: {size}px; 
+            animation-duration: {duration}s; animation-delay: {delay}s; object-fit: cover;">
+        '''
+    st.markdown(html_items, unsafe_allow_html=True)
 
 st.title("Com amor, Bianca")
 st.write("Clique no botão abaixo para descobrir.")
 
 # Lógica do Clique
 if st.button("CLIQUE AQUI ❤️"):
-    # Efeito de balões subindo (nativos do Streamlit)
+    # Disparar a chuva com a foto
+    chuva_personalizada(https://i.imgur.com/4fydr4j.jpg)
+    
+    # Efeito de balões subindo
     st.balloons()
     
-    # Simula uma pequena "chuva" de corações com texto
-    placeholder = st.empty()
+    # Texto central
+    st.markdown('<p style="font-size: 40px; text-align: center; color: #ff4b4b; font-weight: bold;">'
+                '❤️ TE AMO! HOJE, AMANHÃ E SEMPRE! ❤️</p>', unsafe_allow_html=True)
     
-    with placeholder.container():
-        st.markdown('<p class="big-font">❤️ TE AMO! ❤️</p>', unsafe_allow_html=True)
-        st.markdown('<p class="big-font"> Que você nunca se esqueça disso, você é o amor da minha vida </p>', unsafe_allow_html=True)
-        
-        # Aqui criamos a "chuva" visual usando colunas
-        cols = st.columns(5)
-        for i in range(10): # Repete o ciclo de corações
-            for col in cols:
-                col.write("❤️")
-            time.sleep(0.1)
-
-    # Mensagem final carinhosa
-    st.snow() # Isso cria um efeito suave de partículas caindo
+    time.sleep(1)
     st.success("Você é o amor da minha vida!")
